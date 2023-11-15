@@ -1,0 +1,4 @@
+- Brain AnalyzIR and NIRSToolbox the same?
+- Toolbox / Software Pie Charts: multiple choices handled separately in stats = currently create multiple entries
+- quite a few "Unknown" entries are most likely "Default" (e.g. HRF Regressors or GLM Method in case of Homer2/Homer3 users). We need to manually update and consider for analysis
+- Double check "Other" inputs (are they NONE or DEFAULT or really OTHER?) - e.g. in 'Quality/Pruning: Method'
