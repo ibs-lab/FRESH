@@ -36,7 +36,12 @@ fig_confidence_vs_hypothesis_conf(num, H_STUDY_II, 2, 0);
 % sorensen_dice_matrix = fig_SorensenDice(num, foo, StudyID, flag_analysis, flag_sort, conf_threshold)
 sorensen_dice_matrix1 = fig_SorensenDice(num, H_STUDY_I, 1, 1, 1, []);
 sorensen_dice_matrix2 = fig_SorensenDice(num, H_STUDY_II, 2, 1, 1, []);
-
+% unpaired ttest comparing sorensen for study 1 vs study 2. Get the full
+% matrix from above i.e. use [] above.
+[h, p] = ttest2(get_lowerdiagonalelements(sorensen_dice_matrix1), get_lowerdiagonalelements(sorensen_dice_matrix2));
+disp('Unpairded t-test results for the comparison of similarity values between STUDY I and STUDY II:');
+disp(['h:', num2str(h)]);
+disp(['p:', num2str(p)]);
 
 %% save plots
 if flag_save
