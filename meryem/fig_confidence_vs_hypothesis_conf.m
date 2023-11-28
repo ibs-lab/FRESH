@@ -29,9 +29,9 @@ fooH  = fooH (:,idx);
 
 
 figure;
-% subplot 1 hypotheses in the order of confidence
+
 subplot1 = subplot(1,2,1); imagesc(fooH');
-cmap = colormap(gcf, [0 1 0; 0 0 1; 0 0 0]);
+cmap = colormap(subplot1, [0 1 0; 0 0 1; 0 0 0]);
 xlabel('Hypotheses'); ylabel('Groups (ordered by confidence)');
 set(gca,'ytick',[])
 
@@ -50,6 +50,7 @@ x_positions = [0, 0, 0];  % X-coordinates for text
 y_positions = [-2.2 -1.2 -0.2];  % Y-coordinates for text
 text_labels = {'Yes', 'No', 'Not Investigated'};  % Labels for text
 
+
 % Add text annotations with specified colors and bold font
 hold on;
 for i = 1:numel(text_labels)
@@ -59,12 +60,9 @@ hold off;
 
 
 % subplot for confidence
-cmap = colormap(gcf, [0 1 0; 1 1 1; 0 0 1; 0 0 0]); % note about this weird step: this is due to a matlab bug
-% if I keep the three color map from above (subplot1), it clusters the image for subplot2 only by
-% three colors (while it has four) even though I redefined the cmap as gray.
 subplot2 = subplot(1,2,2);
 imagesc(conf);
-cmap = colormap(gca, gray);
+cmap = colormap(subplot2, gray);
 subplot2.Position = [0.55, 0.11, 0.07, 0.815]; % [left, bottom, width, height]
 
 if flag_analysis == 1

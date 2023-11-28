@@ -1,4 +1,4 @@
-% This is the main scripts that reads the data, calls the functions that generate the figures, and
+% This is the main script that reads the data, calls the functions that generate the figures, and
 % save the figures in matlab format and jpeg.
 % Chnage Line11 to your local directory for the freshdata.csv file.
 % MAY
@@ -6,6 +6,9 @@ clear all;
 
 % flags
 flag_save = 0;
+
+% addpath
+addpath('C:\Users\mayucel\Documents\PROJECTS\CODES\FRESH\meryem');
 
 % data directory
 cd C:\Users\mayucel\Documents\PROJECTS\CODES\FRESH\data
