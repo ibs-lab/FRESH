@@ -1,8 +1,8 @@
-% LOGISTIC REGRESSION 
+% LOGISTIC REGRESSION
 % runs binary logistic regression for each hypothesis separately for one or two
 % independent variables with multiple subcategories
 %
-% TO DO: use the most frequent category as reference category
+% TO DO: use the most frequent category as the reference category
 % may2024
 
 
@@ -12,7 +12,8 @@ clear;
 cd C:\Users\mayucel\Documents\PROJECTS\CODES\FRESH\data
 
 % Flags
-flag_display = 0;
+flag_display = 1;
+flag_reference_category = 0; % sets the most frequent category as the reference category
 
 % Load data from CSV file
 filename = 'FreshData.csv';
@@ -20,7 +21,7 @@ filename = 'FreshData.csv';
 % Inputs
 m = 1;
 H_list = 6; %[3, 6, 9, 12, 15, 18, 21,24:63]; % Study I: 3 6 9 12 15 18 21; Study II: 24:63
-ProcessingStep = 76;     % Data Quality/Pruning Coding: 76
+ProcessingStep = 85;     % Data Quality/Pruning Coding: 76
 % Motion Artifact Method Coding: 84
 % Motion Artifact Coding: 85
 % Filtering Coding: 93
@@ -51,6 +52,9 @@ for dependentColIndex = H_list
         % Convert the cell array to a categorical variable
         independentVar = table2cell(dummy(:,independentColsIndices(1))); % Extract independent variables
         categories_indep = unique(independentVar);
+        if flag_reference_category
+            categories_indep = swapMostFrequentCategory(independentVar, categories_indep);
+        end
         independentVar = categorical(independentVar, categories_indep);
 
         % Perform logistic regression
@@ -63,9 +67,15 @@ for dependentColIndex = H_list
         independentVar2 = table2cell(dummy(:,independentColsIndices(2))); % Extract independent variables
 
         categories_indep = unique(independentVar1);
+        if flag_reference_category
+            categories_indep = swapMostFrequentCategory(independentVar1, categories_indep);
+        end
         independentVar1 = categorical(independentVar1, categories_indep);
 
         categories_indep = unique(independentVar2);
+        if flag_reference_category
+            categories_indep = swapMostFrequentCategory(independentVar2, categories_indep);
+        end
         independentVar2 = categorical(independentVar2, categories_indep);
 
         formulaStr = 'dependentVar ~ independentVar1 + independentVar2'; % Regression formula with both independent variables
