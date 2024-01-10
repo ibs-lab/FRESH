@@ -79,7 +79,7 @@ disp(stdBelowDiagonal);
 
 % Visualize the Sørensen-Dice similarity matrix using a heatmap
 figure;
-heatmap(sorensen_dice_matrix, 'Colormap', cool, 'FontSize', 10, ...
+heatmap(sorensen_dice_matrix, 'Colormap', winter, 'FontSize', 10, ...
     'XData', 1:num_vectors, 'YData', 1:num_vectors, 'ColorbarVisible', 'on');
 clim([0.5 1]);
 xlabel('Groups (ordered by confidence)');
