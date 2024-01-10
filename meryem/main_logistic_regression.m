@@ -12,21 +12,21 @@ clear;
 cd C:\Users\mayucel\Documents\PROJECTS\CODES\FRESH\data
 
 % Flags
-flag_display = 1;
-flag_reference_category = 0; % sets the most frequent category as the reference category
+flag_display = 0;
+flag_reference_category = 1; % sets the most frequent category as the reference category
 
 % Load data from CSV file
 filename = 'FreshData.csv';
 
 % Inputs
 m = 1;
-H_list = 6; %[3, 6, 9, 12, 15, 18, 21,24:63]; % Study I: 3 6 9 12 15 18 21; Study II: 24:63
-ProcessingStep = 85;     % Data Quality/Pruning Coding: 76
+H_list = [3, 6, 9, 12, 15, 18, 21,24:63]; % Study I: 3 6 9 12 15 18 21; Study II: 24:63
+ProcessingStep = [93,101];     % Data Quality/Pruning Coding: 76
 % Motion Artifact Method Coding: 84
 % Motion Artifact Coding: 85
 % Filtering Coding: 93
 % Stats Coding: 101
-
+p_threshold = 0.05;
 
 
 for dependentColIndex = H_list
@@ -100,9 +100,20 @@ end
 
 
 %% display number of sign pvalues per category
-for i = 1:size(Pvalues,2)
-    size(find(Pvalues(:,i)<0.1))
+
+% Get the coefficient names
+coefNames = mdl.CoefficientNames;
+
+% Exclude intercept
+independentVarNames = coefNames(2:end); 
+
+% Display independent variable names, t-values, and p-values
+disp('Independent Variable | Frequency of Significance');
+disp('-----------------------------------------');
+for i = 1:numel(independentVarNames)
+    fprintf('%s | %d\n', independentVarNames{i}, size(find(Pvalues(:,i)<p_threshold)));
 end
+
 
 
 %% example
