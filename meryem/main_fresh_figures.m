@@ -7,11 +7,14 @@ clear all;
 % flags
 flag_save = 0;
 
-% addpath
-addpath('C:\Users\mayucel\Documents\PROJECTS\CODES\FRESH\meryem');
+% Directory
+dirdata = 'C:\Users\mayucel\Documents\PROJECTS\CODES\FRESH\data';
+addpath(genpath(dirdata));
+dircode = 'C:\Users\mayucel\Documents\PROJECTS\CODES\FRESH\meryem';
+addpath(genpath(dircode));
 
-% data directory
-cd C:\Users\mayucel\Documents\PROJECTS\CODES\FRESH\data
+% load color palette
+load CrameriColourMaps7.0.mat;
 
 % load excel file
 [num, txt ,raw]= xlsread('FreshData.csv'); %
@@ -27,18 +30,18 @@ fig_analysis_vs_results_conf(num);
 
 %% plot confidence vs H testing
 % plot analysis conf
-fig_confidence_vs_hypothesis_conf(num, H_STUDY_I, 1, 1);
-fig_confidence_vs_hypothesis_conf(num, H_STUDY_II, 2, 1);
+fig_confidence_vs_hypothesis_conf(num, H_STUDY_I, 1, 1, tofino);
+fig_confidence_vs_hypothesis_conf(num, H_STUDY_II, 2, 1, tofino);
 
 % plot results conf
-fig_confidence_vs_hypothesis_conf(num, H_STUDY_I, 1, 0);
-fig_confidence_vs_hypothesis_conf(num, H_STUDY_II, 2, 0);
+fig_confidence_vs_hypothesis_conf(num, H_STUDY_I, 1, 0, tofino);
+fig_confidence_vs_hypothesis_conf(num, H_STUDY_II, 2, 0, tofino);
 
 
 %% plot Sørensen-Dice
 % sorensen_dice_matrix = fig_SorensenDice(num, foo, StudyID, flag_analysis, flag_sort, conf_threshold)
-sorensen_dice_matrix1 = fig_SorensenDice(num, H_STUDY_I, 1, 1, 1, []);
-sorensen_dice_matrix2 = fig_SorensenDice(num, H_STUDY_II, 2, 1, 1, []);
+sorensen_dice_matrix1 = fig_SorensenDice(num, H_STUDY_I, 1, 1, 1, [], tofino);
+sorensen_dice_matrix2 = fig_SorensenDice(num, H_STUDY_II, 2, 1, 1, [], tofino);
 % unpaired ttest comparing sorensen for study 1 vs study 2. Get the full
 % matrix from above i.e. use [] above.
 [h, p] = ttest2(get_lowerdiagonalelements(sorensen_dice_matrix1), get_lowerdiagonalelements(sorensen_dice_matrix2));

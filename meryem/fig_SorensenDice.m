@@ -1,4 +1,4 @@
-function sorensen_dice_matrix = fig_SorensenDice(num, foo, StudyID, flag_analysis, flag_sort, conf_threshold)
+function sorensen_dice_matrix = fig_SorensenDice(num, foo, StudyID, flag_analysis, flag_sort, conf_threshold, cmap)
 % generates Sørensen-Dice Similarity Matrix
 % Define your vectors (each row represents a vector with categorical values 1, 2, or 3)
 % e.g. sorensen_dice_matrix = SorensenDice(H_STUDY_I)
@@ -7,6 +7,7 @@ function sorensen_dice_matrix = fig_SorensenDice(num, foo, StudyID, flag_analysi
 % flag_analysis: (1) analysis conf; (0) results confidence
 % flag_sort: sorts groups by confidence
 % conf_threshold: limit sorensen matrix to a single conf level. Note: to include all groups, put []
+% cmap
 
 % exclude groups that did not investigate any of the hypotheses for the given dataset
 % column = find(all(foo == 3));
@@ -77,9 +78,12 @@ disp('Mean and Std of the SD elements below the diagonal (excluding diagonal):')
 disp(meanBelowDiagonal);
 disp(stdBelowDiagonal);
 
+% setting very high values of tofino  colormap to green (was yellow)
+for i = 200:256; cmap(i,:) = cmap(200,:); end
+
 % Visualize the Sørensen-Dice similarity matrix using a heatmap
 figure;
-heatmap(sorensen_dice_matrix, 'Colormap', winter, 'FontSize', 10, ...
+heatmap(sorensen_dice_matrix, 'Colormap', cmap, 'FontSize', 10, ...
     'XData', 1:num_vectors, 'YData', 1:num_vectors, 'ColorbarVisible', 'on');
 clim([0.5 1]);
 xlabel('Groups (ordered by confidence)');

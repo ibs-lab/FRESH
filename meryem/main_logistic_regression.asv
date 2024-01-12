@@ -10,11 +10,9 @@
 clear;
 
 % Directory
-dirdata = 'C:\Users\mayucel\Documents\PROJECTS\CODES\FRESH\data';
-addpath(genpath(dirdata));
+dirdata = 'C:\Users\mayucel\Documents\PROJECTS\CODES\FRESH\data'
+cd C:\Users\mayucel\Documents\PROJECTS\CODES\FRESH\data;
 dircode = 'C:\Users\mayucel\Documents\PROJECTS\CODES\FRESH\meryem';
-addpath(genpath(dircode));
-
 
 % Flags
 flag_display = 1;
@@ -27,7 +25,7 @@ filename = 'FreshData.csv';
 % Inputs
 m = 1;
 H_list = [3, 6, 9, 12, 15, 18, 21,24:63]; % Study I: 3 6 9 12 15 18 21; Study II: 24:63
-ProcessingStep = [101 113];
+ProcessingStep = [101];
 % Data Quality/Pruning Coding: 76
 % Motion Artifact Coding: 85
 % Filtering Coding: 93
@@ -109,9 +107,7 @@ for dependentColIndex = H_list
 
     % extract pvalues
     mdlc = mdl.Coefficients;
-    if flag_display_pvalue  % under if because for some independent variables, the number of categories for given H does not contain the full set of categories
     Pvalues(m,:) = mdlc(2:end,4).Variables;
-    end
     m = m+1;
 end
 

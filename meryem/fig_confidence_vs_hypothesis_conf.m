@@ -1,4 +1,4 @@
-function fig_confidence_vs_hypothesis_conf(num, H_STUDY, StudyID, flag_analysis)
+function fig_confidence_vs_hypothesis_conf(num, H_STUDY, StudyID, flag_analysis, cmaps)
 % INPUT:
 % num: Numerical output read from freshdata.csv
 % H_STUDY: output of [H_STUDY_I, H_STUDY_II] = fig_hypothesis_variability(txt);
@@ -31,7 +31,7 @@ fooH  = fooH (:,idx);
 figure;
 
 subplot1 = subplot(1,2,1); imagesc(fooH');
-cmap = colormap(subplot1, [0 1 0; 0 0 1; 0 0 0]);
+cmap = colormap(subplot1, [cmaps(170,:); cmaps(40,:); 0 0 0]);
 xlabel('Hypotheses'); ylabel('Groups (ordered by confidence)');
 set(gca,'ytick',[])
 
