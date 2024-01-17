@@ -1,9 +1,8 @@
 % LOGISTIC REGRESSION
-% runs binary logistic regression for each hypothesis separately for one (logistic regression) or two
-% independent variables with multiple subcategories (multiple logistic
+% runs binary logistic regression for each hypothesis separately for one (logistic regression)
+% or any combination of independent variables with multiple subcategories (multiple logistic
 % regression)
 %
-% TO DO: use the most frequent category as the reference category
 % may2024
 
 
@@ -25,21 +24,20 @@ flag_display_pvalue = 1;
 filename = 'FreshData.csv';
 
 % Inputs
+p_threshold = 0.05;
 m = 1;
 H_list = [3, 6, 9, 12, 15, 18, 21,24:63]; % Study I: 3 6 9 12 15 18 21; Study II: 24:63
-ProcessingStep = [101 113];
-% Data Quality/Pruning Coding: 76
-% Motion Artifact Coding: 85
-% Filtering Coding: 93
-% Stats Coding: 101
-
+ProcessingStep = [76 101]; %[76 85 93 101 113 106];
+% Data Quality/Pruning Coding: 76 ++
+% Motion Artifact Coding: 85 ++
+% Filtering Coding: 93 ++
+% Stats Coding: 101 ++
 % Stat Analysis: Signal Space:113  ++
-% GLM Method: 103 
+% GLM Method: 103
 % GLM HRF Regressor: 106  ++
 % Motion Artifact Method Coding: 84 this one a bit tricky, not each H has
 % all categories, so breaking Pvalue line. Checked all pvalues for this,
 % none significant.
-p_threshold = 0.1;
 
 
 
@@ -63,40 +61,49 @@ for dependentColIndex = H_list
     dependentVar = categorical(dependentVar, categories_dep);
 
 
-    if size(independentColsIndices,2) == 1
-        % Convert the cell array to a categorical variable
-        independentVar = table2cell(dummy(:,independentColsIndices(1))); % Extract independent variables
-        categories_indep = unique(independentVar);
+    numIndependentVars = numel(ProcessingStep);
+
+    for i = 1:numIndependentVars
+        variableName = ['independentVar', num2str(i)];
+        variableIndex = independentColsIndices(i);
+
+        % Extract independent variable and create dynamic variable
+        eval([variableName, ' = table2cell(dummy(:, variableIndex));']);
+
+        % Handle categories
+        categories_indep = unique(eval(variableName));
         if flag_reference_category
-            categories_indep = swapMostFrequentCategory(independentVar, categories_indep);
+            categories_indep = swapMostFrequentCategory(eval(variableName), categories_indep);
         end
-        independentVar = categorical(independentVar, categories_indep);
-
-        % Perform logistic regression
-        formulaStr = 'dependentVar ~ independentVar'; % Regression formula
-        data = table(dependentVar, independentVar); % Create table with variables
-        mdl = fitglm(data, formulaStr, 'Distribution', 'binomial', 'Link', 'logit');
-    else
-        % Convert the cell array to a categorical variable
-        independentVar1 = table2cell(dummy(:,independentColsIndices(1))); % Extract independent variables
-        independentVar2 = table2cell(dummy(:,independentColsIndices(2))); % Extract independent variables
-
-        categories_indep = unique(independentVar1);
-        if flag_reference_category
-            categories_indep = swapMostFrequentCategory(independentVar1, categories_indep);
-        end
-        independentVar1 = categorical(independentVar1, categories_indep);
-
-        categories_indep = unique(independentVar2);
-        if flag_reference_category
-            categories_indep = swapMostFrequentCategory(independentVar2, categories_indep);
-        end
-        independentVar2 = categorical(independentVar2, categories_indep);
-
-        formulaStr = 'dependentVar ~ independentVar1 + independentVar2'; % Regression formula with both independent variables
-        data = table(dependentVar, independentVar1, independentVar2); % Create table with variables
-        mdl = fitglm(data, formulaStr, 'Distribution', 'binomial', 'Link', 'logit');
+        eval([variableName, ' = categorical(', variableName, ', categories_indep);']);
     end
+
+   
+    % Initialize formula string and data table
+    formulaStr = 'dependentVar ~ ';
+    dataVariables = {'dependentVar'};
+
+    for i = 1:numIndependentVars
+        variableName = ['independentVar', num2str(i)];
+        formulaStr = [formulaStr, variableName, ' + '];
+        dataVariables{end + 1} = variableName;
+    end
+
+    % Remove the trailing '+'
+    formulaStr = formulaStr(1:end-2);
+
+
+    % Create the data table
+    data = table(dependentVar);
+
+    for i = 2:numIndependentVars+1
+        variableName = dataVariables{i};
+        data.(variableName) = eval(dataVariables{i});
+    end
+
+
+    mdl = fitglm(data, formulaStr, 'Distribution', 'binomial', 'Link', 'logit');
+
 
     % Display summary of the logistic regression model
     if flag_display
@@ -109,8 +116,8 @@ for dependentColIndex = H_list
 
     % extract pvalues
     mdlc = mdl.Coefficients;
-    if flag_display_pvalue  % under if because for some independent variables, the number of categories for given H does not contain the full set of categories
-    Pvalues(m,:) = mdlc(2:end,4).Variables;
+    if flag_display_pvalue  % under "if" because for some independent variables, the number of categories for given H does not contain the full set of categories
+        Pvalues(m,:) = mdlc(2:end,4).Variables;
     end
     m = m+1;
 end
@@ -118,18 +125,18 @@ end
 
 %% display number of sign pvalues per category
 if flag_display_pvalue
-% Get the coefficient names
-coefNames = mdl.CoefficientNames;
+    % Get the coefficient names
+    coefNames = mdl.CoefficientNames;
 
-% Exclude intercept
-independentVarNames = coefNames(2:end); 
+    % Exclude intercept
+    independentVarNames = coefNames(2:end);
 
-% Display independent variable names, t-values, and p-values
-disp('Independent Variable | Frequency of Significance');
-disp('-----------------------------------------');
-for i = 1:numel(independentVarNames)
-    fprintf('%s | %d\n', independentVarNames{i}, size(find(Pvalues(:,i)<p_threshold)));
-end
+    % Display independent variable names, t-values, and p-values
+    disp('Independent Variable | Frequency of Significance');
+    disp('-----------------------------------------');
+    for i = 1:numel(independentVarNames)
+        fprintf('%s | %d\n', independentVarNames{i}, size(find(Pvalues(:,i)<p_threshold)));
+    end
 end
 
 
