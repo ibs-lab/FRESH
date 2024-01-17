@@ -19,6 +19,7 @@ addpath(genpath(dircode));
 flag_display = 1;
 flag_reference_category = 1; % sets the most frequent category as the reference category
 flag_display_pvalue = 1;
+flag_chi2_test = 1; % performing chi-square test to check multicollinearity between independent variables
 
 % Load data from CSV file
 filename = 'FreshData.csv';
@@ -78,7 +79,7 @@ for dependentColIndex = H_list
         eval([variableName, ' = categorical(', variableName, ', categories_indep);']);
     end
 
-   
+
     % Initialize formula string and data table
     formulaStr = 'dependentVar ~ ';
     dataVariables = {'dependentVar'};
@@ -140,6 +141,34 @@ if flag_display_pvalue
 end
 
 
+if flag_chi2_test
+    % Number of independent variables
+    numIndepVars = numel(independentColsIndices);
+
+    fprintf('\n\n'); % Add two blank lines
+    disp('-------CHI-SQUARE TEST RESULTS--------');
+
+    % Iterate through all combinations of independent variables
+    for i = 1:numIndepVars
+        for j = i+1:numIndepVars
+            % Extract independent variables
+            independentVar1 = table2cell(dummy(:, independentColsIndices(i)));
+            independentVar2 = table2cell(dummy(:, independentColsIndices(j)));
+
+            % Create contingency table
+            contingencyTable = crosstab(independentVar1, independentVar2);
+
+            % Perform chi-square test
+            [pval, chi2stat] = chi2test(contingencyTable);
+
+            % Display results
+            disp(['Chi2-statistic for ', num2str(i), ' vs ', num2str(j), ': ', num2str(chi2stat)]);
+            disp(['p-value for ', num2str(i), ' vs ', num2str(j), ': ', num2str(pval)]);
+            disp('-----------------------------------------');
+        end
+    end
+end
+
 
 %% example
 % % Generate sample data
@@ -162,5 +191,3 @@ end
 %
 % % Make predictions using the model
 % predictions = predict(mdl, data);
-
-
