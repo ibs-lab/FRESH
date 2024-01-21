@@ -49,6 +49,9 @@ disp('Unpairded t-test results for the comparison of similarity values between S
 disp(['h:', num2str(h)]);
 disp(['p:', num2str(p)]);
 
+%% display corr between analysis/results confidence and education
+display_corr(num);
+
 %% save plots
 if flag_save
     % Specify the directory to save the figures
