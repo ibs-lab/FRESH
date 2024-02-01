@@ -25,7 +25,7 @@ load CrameriColourMaps7.0.mat;
 
 
 %% plot analysis confidence vs results confidence
-fig_analysis_vs_results_conf(num);
+fig_analysis_vs_results_conf(num, tofino);
 
 
 %% plot confidence vs H testing
