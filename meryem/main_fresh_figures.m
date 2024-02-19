@@ -55,25 +55,29 @@ display_corr(num);
 %% save plots
 if flag_save
     % Specify the directory to save the figures
-directory = 'C:\Users\mayucel\Documents\PROJECTS\PROJECTS\2021_FRESH\Figures'; 
+    directory = 'C:\Users\mayucel\Documents\PROJECTS\PROJECTS\2021_FRESH\FiguresandTables';
 
-% Check if the directory exists, if not, create it
-if ~isfolder(directory)
-    mkdir(directory);
-end
+    % Check if the directory exists, if not, create it
+    if ~isfolder(directory)
+        mkdir(directory);
+    end
 
-% Get handles to all current figures
-fig_handles = findall(0, 'Type', 'figure');
+    % Get handles to all current figures
+    fig_handles = findall(0, 'Type', 'figure');
 
-% Save each figure as JPEG and MATLAB FIG files
-for i = 1:length(fig_handles)
-    % Save as JPEG
-    jpeg_filename = fullfile(directory, ['figure_', num2str(i), '.jpg']);
-    saveas(fig_handles(i), jpeg_filename, 'jpg');
-    
-    % Save as MATLAB FIG file
-    fig_filename = fullfile(directory, ['figure_', num2str(i), '.fig']);
-    saveas(fig_handles(i), fig_filename, 'fig');
-end
+    % Save each figure as JPEG and MATLAB FIG files
+    for i = 1:length(fig_handles)
+
+        % Save as JPEG
+        jpeg_filename = fullfile(directory, ['figure_', num2str(i), '.jpg']);
+        resolution = '-r300'; % For example, 300 DPI
+        print(fig_handles(i), jpeg_filename, '-djpeg', resolution);
+
+
+        % Save as MATLAB FIG file
+        fig_filename = fullfile(directory, ['figure_', num2str(i), '.fig']);
+        saveas(fig_handles(i), fig_filename, 'fig');
+
+    end
 
 end
