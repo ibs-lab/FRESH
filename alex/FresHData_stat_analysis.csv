@@ -1,69 +1,69 @@
-Study;ID;Stat Analysis: Software;Stat Analysis: Method;Stat Analysis: On Signal Type;Stat Analysis: Signal Space;Stat Analysis: Metric;Test for Normality;Stat Analysis: Threshold (p< X);Multiple Comparisons Correction
-Study 2;1;Open PoTATo;Paired t-Test;HbO only;Channel;signal amplitude (windowed);No test for Normality;0.05;Bonferroni
-Study 1;2;JASP;One-Sample t-Test,Repeated Measures ANOVA;HbO and HbR;ROI;GLM beta values;Shapiro-Wilk;0.05;Bonferroni
-Study 2;2;JASP;Paired t-Test,One-Sample t-Test;HbO and HbR;ROI;GLM beta values;Shapiro-Wilk;0.05;No Correction
-Study 2;3;Matlab, HOMER3;Fixed Mixed Effects;HbO and HbR;Channel,ROI;slope of HRF;Kolmogorov–Smirnov;0.01;Bonferroni
-Study 1;4;Matlab;Mixed Effects (Unspecified),ANOVA indep.,Two-tailed t-test;HbO and HbR;ROI;signal amplitude (windowed);No test for Normality;0.05;No Correction
-Study 2;4;Matlab;Mixed Effects (Unspecified),ANOVA indep.,Two-tailed t-test;HbO and HbR;ROI;signal amplitude (windowed);No test for Normality;0.05;No Correction
-Study 1;5;RStudio;Linear Mixed Effects;HbO only;ROI;signal amplitude (windowed);No test for Normality;0.05;No Correction
-Study 2;5;Matlab, HOMER3;One-tailed t-test, One-Sample t-Test;HbO and HbR;ROI;signal amplitude (windowed);No test for Normality;0.025;Bonferroni
-Study 1;6;RStudio;Paired t-Test,One-tailed t-test,One-Sample t-Test;HbO only;ROI;signal amplitude (windowed);Shapiro-Wilk;0.05;Bonferroni
-Study 2;6;RStudio;One-tailed t-test,One-Sample t-Test;HbO only;ROI;signal amplitude (windowed);Shapiro-Wilk;0.05;Bonferroni
-Study 1;7;Matlab;Paired t-Test;HbO only;ROI;GLM beta values;No test for Normality;0.05;Bonferroni
-Study 2;7;Matlab;Hotelling T2 test;HbO only;ROI;signal amplitude (binned);No test for Normality;0.05;Bonferroni
-Study 1;8;Matlab;One-Sample t-Test;HbO and HbR;Channel;GLM beta values;No test for Normality;0.05;No Correction
-Study 2;8;Matlab;One-Sample t-Test;HbO and HbR;Channel;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
-Study 1;9;AnalyzIR;Mixed Effects (Unspecified);HbO only;Channel;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
-Study 2;9;Matlab, AnalyzIR;Mixed Effects (Unspecified);HbO only;Channel;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
-Study 1;10;Matlab, HOMER3;One-Sample t-Test,Paired t-Test;HbO and HbR;ROI;signal amplitude (windowed);No test for Normality;0.05;No Correction
-Study 2;10;Matlab, HOMER3;Repeated Measures ANOVA,One-Sample t-Test,Paired t-Test;Other;ROI;signal amplitude (windowed);No test for Normality;0.05;No Correction
-Study 1;11;AnalyzIR;Linear Mixed Effects;HbO only;ROI;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
-Study 2;11;Matlab;Linear Mixed Effects;HbO only;ROI;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
-Study 1;12;Matlab;Two-tailed t-test;HbO only;Channel;GLM beta values;No test for Normality;0.05;No Correction
-Study 2;12;Matlab;Two-tailed t-test;HbO only;Channel;GLM beta values;No test for Normality;0.05;No Correction
-Study 2;13;Python;Two-Sample t-Test,One-tailed t-test;HbO and HbR;Channel;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
-Study 1;14;AnalyzIR;Robust Mixed Effects;HbO and HbR;Channel,ROI;GLM beta values;No test for Normality;0.05;No Correction
-Study 2;14;AnalyzIR;Robust Mixed Effects;HbO and HbR;Channel,ROI;GLM beta values;No test for Normality;0.05;No Correction
-Study 1;16;Python;Linear Mixed Effects;HbO only;ROI;GLM beta values;No test for Normality;0.05;No Correction
-Study 2;16;Python;Linear Mixed Effects;HbO only;ROI;GLM beta values;No test for Normality;0.05;No Correction
-Study 1;17;Matlab, HOMER3;Mixed Effects (Unspecified);HbO only;Channel;GLM beta values;No test for Normality;0.05;Bonferroni
-Study 2;17;Matlab, HOMER3;Mixed Effects (Unspecified);HbO only;Channel;GLM beta values;No test for Normality;0.05;Bonferroni
-Study 1;18;AnalyzIR;Mixed Effects (Unspecified);HbO and HbR;ROI;GLM beta values;No test for Normality;0.05;No Correction
-Study 2;18;AnalyzIR;Unkown or Other Method;HbO and HbR;ROI;GLM beta values;No test for Normality;0.05;No Correction
-Study 1;19;Matlab;One-tailed t-test,Two-Sample t-Test,Linear Mixed Effects;HbO only;Channel;GLM beta values;No test for Normality;0.05;No Correction
-Study 2;19;Matlab;One-tailed t-test,Two-Sample t-Test,Linear Mixed Effects;HbO only;Channel;GLM beta values;No test for Normality;0.05;No Correction
-Study 1;20;Satori;Random Effects;HbO and HbR;ROI;GLM beta values;No test for Normality;0.05;No Correction
-Study 2;20;Satori;One-tailed t-test,Two-tailed t-test, One-Sample t-Test;HbO and HbR;ROI;GLM beta values;No test for Normality;0.01;Benjamini-Hochberg
-Study 1;21;RStudio;Wilcoxon signed-rank test,Linear Mixed Effects;HbR only;Channel,ROI;signal amplitude (windowed);Kolmogorov–Smirnov;0.05;Benjamini-Hochberg
-Study 2;21;RStudio;Wilcoxon signed-rank test,Unkown or Other Method;HbO and HbR;Channel;signal amplitude (windowed);Kolmogorov–Smirnov;Unknown;No Correction
-Study 1;22;Matlab;One-Sample t-Test,One-tailed t-test,Paired t-Test,Two-tailed t-test,Two-Sample t-Test,Multiple Comparisons Correction;HbO only;ROI;GLM beta values;Kolmogorov–Smirnov;0.05;Benjamini-Hochberg
-Study 2;22;Matlab;One-Sample t-Test,One-tailed t-test,Paired t-Test,Two-tailed t-test,Two-Sample t-Test,Multiple Comparisons Correction;HbO only;ROI;GLM beta values;Kolmogorov–Smirnov;0.05;Benjamini-Hochberg
-Study 1;23;AnalyzIR, Matlab;Repeated Measures ANOVA;HbO and HbR;ROI;GLM beta values;No test for Normality;0.05;No Correction
-Study 1;24;Matlab, HOMER3;Paired t-Test;HbO only;ROI;signal amplitude (windowed);No test for Normality;0.05;Benjamini-Yekutieli
-Study 2;24;Matlab, HOMER3;Paired t-Test;HbO only;ROI;signal amplitude (windowed);No test for Normality;0.05;Benjamini-Yekutieli
-Study 1;25;Matlab, AnalyzIR;F Statistics,Mixed Effects (Unspecified),Paired t-Test,Two-tailed t-test;HbO only,HbO and HbR;Channel,ROI;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
-Study 2;25;Matlab, AnalyzIR;F Statistics,Mixed Effects (Unspecified),Paired t-Test,Two-tailed t-test;HbO only,HbO and HbR;Channel,ROI;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
-Study 1;26;Matlab;Paired t-Test,One-Sample t-Test;HbO and HbR;Channel,ROI;GLM beta values;No test for Normality;0.05;No Correction
-Study 2;26;Matlab;Paired t-Test,One-Sample t-Test;HbO and HbR;Channel,ROI;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
-Study 1;27;RStudio;Linear Mixed Effects;HbO and HbR;ROI;GLM beta values;No test for Normality;0.05;No Correction
-Study 2;27;RStudio,Python;Paired t-Test,Unkown or Other Method;HbO and HbR,Other;ROI;GLM beta values;No test for Normality;0.05;No Correction
-Study 1;28;Matlab;Bootstrap Estimation;HbO only;Channel;signal amplitude (windowed);No test for Normality;0.05;No Correction
-Study 2;28;Matlab;Bootstrap Estimation;HbO only;Channel;signal amplitude (windowed);No test for Normality;0.05;No Correction
-Study 1;29;Matlab;Wilcoxon signed-rank test;HbO and HbR;Channel,ROI;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
-Study 2;29;Matlab;Wilcoxon signed-rank test;HbO and HbR;Channel,ROI;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
-Study 1;30;Python;Permutation Test;HbO only;ROI;GLM beta values;No test for Normality;0.05;No Correction
-Study 2;30;Python;Unkown or Other Method;HbO only;ROI;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
-Study 1;31;RStudio;Linear Mixed Effects;HbO only;ROI;GLM beta values;No test for Normality;0.05;No Correction
-Study 1;32;Satori;Paired t-Test,One-tailed t-test,Two-tailed t-test;HbO only;Channel;GLM beta values,Other Metric;No test for Normality;0.05;Benjamini-Hochberg
-Study 2;32;Satori;One-tailed t-test,Two-tailed t-test, One-Sample t-Test;HbO only;Channel;GLM beta values,Other Metric;No test for Normality;0.05;Benjamini-Hochberg
-Study 1;33;Matlab;One-Sample t-Test,Two-Sample t-Test;HbO only;Image,ROI;GLM beta values;No test for Normality;0.05;No Correction
-Study 2;33;Matlab;Unkown or Other Method;HbO only;Image,ROI;GLM beta values;No test for Normality;0.001;No Correction
-Study 1;34;Matlab;One-tailed t-test,One-Sample t-Test,Paired t-Test;Other;ROI;laterality index,GLM beta values;No test for Normality;0.05;No Correction
-Study 1;35;Matlab;Linear Mixed Effects;HbO only;ROI;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
-Study 1;35;Matlab;Linear Mixed Effects;HbO only;ROI;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
-Study 1;36;HOMER2, Matlab;One-tailed t-test, One-Sample t-Test;HbO and HbR;Channel;GLM beta values;No test for Normality;0.05;No Correction
-Study 2;36;HOMER2, Matlab;One-tailed t-test, One-Sample t-Test;HbO and HbR;Channel;GLM beta values;No test for Normality;0.05;No Correction
-Study 1;37;JASP;One-Sample t-Test,Paired t-Test;HbO and HbR;ROI;signal amplitude (windowed);No test for Normality;0.05;No Correction
-Study 2;37;JASP;ANOVA indep.,Paired t-Test;HbO and HbR;ROI;signal amplitude (windowed);No test for Normality;0.05;No Correction
-Study 1;38;Matlab;Wilcoxon signed-rank test;HbO only;ROI;signal amplitude (windowed);Shapiro-Wilk;0.05;No Correction
-Study 2;38;Matlab;Paired t-Test,One-tailed t-test,Two-Sample t-Test;HbO only;Channel;signal amplitude (windowed);Shapiro-Wilk;0.05;Benjamini-Hochberg
+Study;ID;Stat Analysis: Software;Stat Analysis: Method;Stat Analysis: Method: Simplified;Stat Analysis: On Signal Type;Stat Analysis: Signal Space;Stat Analysis: Metric;Test for Normality;Stat Analysis: Threshold (p< X);Multiple Comparisons Correction
+Study 2;1;Open PoTATo;Paired t-Test;Paired t-Test;HbO only;Channel;signal amplitude (windowed);No test for Normality;0.05;Bonferroni
+Study 1;2;JASP;One-Sample t-Test,Repeated Measures ANOVA;Multiple Methods;HbO and HbR;ROI;GLM beta values;Shapiro-Wilk;0.05;Bonferroni
+Study 2;2;JASP;Paired t-Test,One-Sample t-Test;Multiple Methods;HbO and HbR;ROI;GLM beta values;Shapiro-Wilk;0.05;No Correction
+Study 2;3;Matlab, HOMER3;Fixed Mixed Effects;Fixed Mixed Effects;HbO and HbR;Channel,ROI;slope of HRF;Kolmogorov–Smirnov;0.01;Bonferroni
+Study 1;4;Matlab;Mixed Effects (Unspecified),ANOVA indep.,Two-tailed t-test;Multiple Methods;HbO and HbR;ROI;signal amplitude (windowed);No test for Normality;0.05;No Correction
+Study 2;4;Matlab;Mixed Effects (Unspecified),ANOVA indep.,Two-tailed t-test;Multiple Methods;HbO and HbR;ROI;signal amplitude (windowed);No test for Normality;0.05;No Correction
+Study 1;5;RStudio;Linear Mixed Effects;Linear Mixed Effects;HbO only;ROI;signal amplitude (windowed);No test for Normality;0.05;No Correction
+Study 2;5;Matlab, HOMER3;One-tailed t-test, One-Sample t-Test;Multiple Methods;HbO and HbR;ROI;signal amplitude (windowed);No test for Normality;0.025;Bonferroni
+Study 1;6;RStudio;Paired t-Test,One-tailed t-test,One-Sample t-Test;Multiple Methods;HbO only;ROI;signal amplitude (windowed);Shapiro-Wilk;0.05;Bonferroni
+Study 2;6;RStudio;One-tailed t-test,One-Sample t-Test;Multiple Methods;HbO only;ROI;signal amplitude (windowed);Shapiro-Wilk;0.05;Bonferroni
+Study 1;7;Matlab;Paired t-Test;Paired t-Test;HbO only;ROI;GLM beta values;No test for Normality;0.05;Bonferroni
+Study 2;7;Matlab;Hotelling T2 test;Hotelling T2 test;HbO only;ROI;signal amplitude (binned);No test for Normality;0.05;Bonferroni
+Study 1;8;Matlab;One-Sample t-Test;One-Sample t-Test;HbO and HbR;Channel;GLM beta values;No test for Normality;0.05;No Correction
+Study 2;8;Matlab;One-Sample t-Test;One-Sample t-Test;HbO and HbR;Channel;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
+Study 1;9;AnalyzIR;Mixed Effects (Unspecified);Mixed Effects (Unspecified);HbO only;Channel;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
+Study 2;9;Matlab, AnalyzIR;Mixed Effects (Unspecified);Mixed Effects (Unspecified);HbO only;Channel;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
+Study 1;10;Matlab, HOMER3;One-Sample t-Test,Paired t-Test;Multiple Methods;HbO and HbR;ROI;signal amplitude (windowed);No test for Normality;0.05;No Correction
+Study 2;10;Matlab, HOMER3;Repeated Measures ANOVA,One-Sample t-Test,Paired t-Test;Multiple Methods;Other;ROI;signal amplitude (windowed);No test for Normality;0.05;No Correction
+Study 1;11;AnalyzIR;Linear Mixed Effects;Linear Mixed Effects;HbO only;ROI;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
+Study 2;11;Matlab;Linear Mixed Effects;Linear Mixed Effects;HbO only;ROI;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
+Study 1;12;Matlab;Two-tailed t-test;Two-tailed t-test;HbO only;Channel;GLM beta values;No test for Normality;0.05;No Correction
+Study 2;12;Matlab;Two-tailed t-test;Two-tailed t-test;HbO only;Channel;GLM beta values;No test for Normality;0.05;No Correction
+Study 2;13;Python;Two-Sample t-Test,One-tailed t-test;Multiple Methods;HbO and HbR;Channel;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
+Study 1;14;AnalyzIR;Robust Mixed Effects;Robust Mixed Effects;HbO and HbR;Channel,ROI;GLM beta values;No test for Normality;0.05;No Correction
+Study 2;14;AnalyzIR;Robust Mixed Effects;Robust Mixed Effects;HbO and HbR;Channel,ROI;GLM beta values;No test for Normality;0.05;No Correction
+Study 1;16;Python;Linear Mixed Effects;Linear Mixed Effects;HbO only;ROI;GLM beta values;No test for Normality;0.05;No Correction
+Study 2;16;Python;Linear Mixed Effects;Linear Mixed Effects;HbO only;ROI;GLM beta values;No test for Normality;0.05;No Correction
+Study 1;17;Matlab, HOMER3;Mixed Effects (Unspecified);Mixed Effects (Unspecified);HbO only;Channel;GLM beta values;No test for Normality;0.05;Bonferroni
+Study 2;17;Matlab, HOMER3;Mixed Effects (Unspecified);Mixed Effects (Unspecified);HbO only;Channel;GLM beta values;No test for Normality;0.05;Bonferroni
+Study 1;18;AnalyzIR;Mixed Effects (Unspecified);Mixed Effects (Unspecified);HbO and HbR;ROI;GLM beta values;No test for Normality;0.05;No Correction
+Study 2;18;AnalyzIR;Unkown or Other Method;Unkown or Other Method;HbO and HbR;ROI;GLM beta values;No test for Normality;0.05;No Correction
+Study 1;19;Matlab;One-tailed t-test,Two-Sample t-Test,Linear Mixed Effects;Multiple Methods;HbO only;Channel;GLM beta values;No test for Normality;0.05;No Correction
+Study 2;19;Matlab;One-tailed t-test,Two-Sample t-Test,Linear Mixed Effects;Multiple Methods;HbO only;Channel;GLM beta values;No test for Normality;0.05;No Correction
+Study 1;20;Satori;Random Effects;Random Effects;HbO and HbR;ROI;GLM beta values;No test for Normality;0.05;No Correction
+Study 2;20;Satori;One-tailed t-test,Two-tailed t-test, One-Sample t-Test;Multiple Methods;HbO and HbR;ROI;GLM beta values;No test for Normality;0.01;Benjamini-Hochberg
+Study 1;21;RStudio;Wilcoxon signed-rank test,Linear Mixed Effects;Multiple Methods;HbR only;Channel,ROI;signal amplitude (windowed);Kolmogorov–Smirnov;0.05;Benjamini-Hochberg
+Study 2;21;RStudio;Wilcoxon signed-rank test,Unkown or Other Method;Multiple Methods;HbO and HbR;Channel;signal amplitude (windowed);Kolmogorov–Smirnov;Unknown;No Correction
+Study 1;22;Matlab;One-Sample t-Test,One-tailed t-test,Paired t-Test,Two-tailed t-test,Two-Sample t-Test,Multiple Comparisons Correction;Multiple Methods;HbO only;ROI;GLM beta values;Kolmogorov–Smirnov;0.05;Benjamini-Hochberg
+Study 2;22;Matlab;One-Sample t-Test,One-tailed t-test,Paired t-Test,Two-tailed t-test,Two-Sample t-Test,Multiple Comparisons Correction;Multiple Methods;HbO only;ROI;GLM beta values;Kolmogorov–Smirnov;0.05;Benjamini-Hochberg
+Study 1;23;AnalyzIR, Matlab;Repeated Measures ANOVA;Repeated Measures ANOVA;HbO and HbR;ROI;GLM beta values;No test for Normality;0.05;No Correction
+Study 1;24;Matlab, HOMER3;Paired t-Test;Paired t-Test;HbO only;ROI;signal amplitude (windowed);No test for Normality;0.05;Benjamini-Yekutieli
+Study 2;24;Matlab, HOMER3;Paired t-Test;Paired t-Test;HbO only;ROI;signal amplitude (windowed);No test for Normality;0.05;Benjamini-Yekutieli
+Study 1;25;Matlab, AnalyzIR;F Statistics,Mixed Effects (Unspecified),Paired t-Test,Two-tailed t-test;Multiple Methods;HbO only,HbO and HbR;Channel,ROI;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
+Study 2;25;Matlab, AnalyzIR;F Statistics,Mixed Effects (Unspecified),Paired t-Test,Two-tailed t-test;Multiple Methods;HbO only,HbO and HbR;Channel,ROI;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
+Study 1;26;Matlab;Paired t-Test,One-Sample t-Test;Multiple Methods;HbO and HbR;Channel,ROI;GLM beta values;No test for Normality;0.05;No Correction
+Study 2;26;Matlab;Paired t-Test,One-Sample t-Test;Multiple Methods;HbO and HbR;Channel,ROI;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
+Study 1;27;RStudio;Linear Mixed Effects;Linear Mixed Effects;HbO and HbR;ROI;GLM beta values;No test for Normality;0.05;No Correction
+Study 2;27;RStudio,Python;Paired t-Test,Unkown or Other Method;Multiple Methods;HbO and HbR,Other;ROI;GLM beta values;No test for Normality;0.05;No Correction
+Study 1;28;Matlab;Bootstrap Estimation;Bootstrap Estimation;HbO only;Channel;signal amplitude (windowed);No test for Normality;0.05;No Correction
+Study 2;28;Matlab;Bootstrap Estimation;Bootstrap Estimation;HbO only;Channel;signal amplitude (windowed);No test for Normality;0.05;No Correction
+Study 1;29;Matlab;Wilcoxon signed-rank test;Wilcoxon signed-rank test;HbO and HbR;Channel,ROI;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
+Study 2;29;Matlab;Wilcoxon signed-rank test;Wilcoxon signed-rank test;HbO and HbR;Channel,ROI;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
+Study 1;30;Python;Permutation Test;Permutation Test;HbO only;ROI;GLM beta values;No test for Normality;0.05;No Correction
+Study 2;30;Python;Unkown or Other Method;Unkown or Other Method;HbO only;ROI;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
+Study 1;31;RStudio;Linear Mixed Effects;Linear Mixed Effects;HbO only;ROI;GLM beta values;No test for Normality;0.05;No Correction
+Study 1;32;Satori;Paired t-Test,One-tailed t-test,Two-tailed t-test;Multiple Methods;HbO only;Channel;GLM beta values,Other Metric;No test for Normality;0.05;Benjamini-Hochberg
+Study 2;32;Satori;One-tailed t-test,Two-tailed t-test, One-Sample t-Test;Multiple Methods;HbO only;Channel;GLM beta values,Other Metric;No test for Normality;0.05;Benjamini-Hochberg
+Study 1;33;Matlab;One-Sample t-Test,Two-Sample t-Test;Multiple Methods;HbO only;Image,ROI;GLM beta values;No test for Normality;0.05;No Correction
+Study 2;33;Matlab;Unkown or Other Method;Unkown or Other Method;HbO only;Image,ROI;GLM beta values;No test for Normality;0.001;No Correction
+Study 1;34;Matlab;One-tailed t-test,One-Sample t-Test,Paired t-Test;Multiple Methods;Other;ROI;laterality index,GLM beta values;No test for Normality;0.05;No Correction
+Study 1;35;Matlab;Linear Mixed Effects;Linear Mixed Effects;HbO only;ROI;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
+Study 1;35;Matlab;Linear Mixed Effects;Linear Mixed Effects;HbO only;ROI;GLM beta values;No test for Normality;0.05;Benjamini-Hochberg
+Study 1;36;HOMER2, Matlab;One-tailed t-test, One-Sample t-Test;Multiple Methods;HbO and HbR;Channel;GLM beta values;No test for Normality;0.05;No Correction
+Study 2;36;HOMER2, Matlab;One-tailed t-test, One-Sample t-Test;Multiple Methods;HbO and HbR;Channel;GLM beta values;No test for Normality;0.05;No Correction
+Study 1;37;JASP;One-Sample t-Test,Paired t-Test;Multiple Methods;HbO and HbR;ROI;signal amplitude (windowed);No test for Normality;0.05;No Correction
+Study 2;37;JASP;ANOVA indep.,Paired t-Test;Multiple Methods;HbO and HbR;ROI;signal amplitude (windowed);No test for Normality;0.05;No Correction
+Study 1;38;Matlab;Wilcoxon signed-rank test;Wilcoxon signed-rank test;HbO only;ROI;signal amplitude (windowed);Shapiro-Wilk;0.05;No Correction
+Study 2;38;Matlab;Paired t-Test,One-tailed t-test,Two-Sample t-Test;Multiple Methods;HbO only;Channel;signal amplitude (windowed);Shapiro-Wilk;0.05;Benjamini-Hochberg
