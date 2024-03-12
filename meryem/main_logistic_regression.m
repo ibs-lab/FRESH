@@ -28,7 +28,7 @@ filename = 'FreshData.csv';
 p_threshold = 0.05;
 m = 1;
 H_list = [3, 6, 9, 12, 15, 18, 21,24:63]; % Study I: 3 6 9 12 15 18 21; Study II: 24:63
-ProcessingStep = [76 101]; %[76 85 93 101 113 106];
+ProcessingStep = 122;
 % Data Quality/Pruning Coding: 76 ++
 % Motion Artifact Coding: 85 ++
 % Filtering Coding: 93 ++
@@ -36,6 +36,8 @@ ProcessingStep = [76 101]; %[76 85 93 101 113 106];
 % Stat Analysis: Signal Space:113  ++
 % GLM Method: 103
 % GLM HRF Regressor: 106  ++
+% Statistical Analysis Method: 111
+% Multiple Comparisons: 122
 % Motion Artifact Method Coding: 84 this one a bit tricky, not each H has
 % all categories, so breaking Pvalue line. Checked all pvalues for this,
 % none significant.
@@ -74,9 +76,19 @@ for dependentColIndex = H_list
         % Handle categories
         categories_indep = unique(eval(variableName));
         if flag_reference_category
-            categories_indep = swapMostFrequentCategory(eval(variableName), categories_indep);
+            if ProcessingStep == 122 % Multiple Comparison
+                categories_indep = {'N/A';'Benjamini-Yekutieli';'Bonferroni';'Benjamini-Hochberg'};
+                % Note: Both N/A and Benjamini-Hochberg have same
+                % frequency, I needed to force to reference category to
+                % 'N/A' as otherwise half of the time the algorithm uses
+                % N/A and half the time BH. Welcome to hardcoding.
+            else
+                categories_indep = swapMostFrequentCategory(eval(variableName), categories_indep);
+            end
         end
         eval([variableName, ' = categorical(', variableName, ', categories_indep);']);
+
+
     end
 
 
