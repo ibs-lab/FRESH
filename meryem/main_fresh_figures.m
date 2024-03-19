@@ -30,12 +30,12 @@ fig_analysis_vs_results_conf(num, tofino);
 
 %% plot confidence vs H testing
 % plot analysis conf
-fig_confidence_vs_hypothesis_conf(num, H_STUDY_I, 1, 1, tofino);
-fig_confidence_vs_hypothesis_conf(num, H_STUDY_II, 2, 1, tofino);
+fig_confidence_vs_hypothesis_conf(num, H_STUDY_I, 1, 1, tofino, 1);
+fig_confidence_vs_hypothesis_conf(num, H_STUDY_II, 2, 1, tofino, 0);
 
 % plot results conf
-fig_confidence_vs_hypothesis_conf(num, H_STUDY_I, 1, 0, tofino);
-fig_confidence_vs_hypothesis_conf(num, H_STUDY_II, 2, 0, tofino);
+fig_confidence_vs_hypothesis_conf(num, H_STUDY_I, 1, 0, tofino, 0);
+fig_confidence_vs_hypothesis_conf(num, H_STUDY_II, 2, 0, tofino, 0);
 
 
 %% plot Sørensen-Dice

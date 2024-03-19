@@ -1,4 +1,4 @@
-function fig_confidence_vs_hypothesis_conf(num, H_STUDY, StudyID, flag_analysis, cmaps)
+function fig_confidence_vs_hypothesis_conf(num, H_STUDY, StudyID, flag_analysis, cmaps, flag_labels)
 % INPUT:
 % num: Numerical output read from freshdata.csv
 % H_STUDY: output of [H_STUDY_I, H_STUDY_II] = fig_hypothesis_variability(txt);
@@ -46,17 +46,34 @@ end
 
 
 % Define text positions within the 'grey' area
-x_positions = [0, 0, 0];  % X-coordinates for text
-y_positions = [-2.2 -1.2 -0.2];  % Y-coordinates for text
+% x_positions = [0, 0, 0];  % X-coordinates for text
+% y_positions = [-2.2 -1.2 -0.2];  % Y-coordinates for text
+x_positions = [0.6 1.9 3];  % X-coordinates for text
+y_positions = [-1 -1 -1];  % Y-coordinates for text
 text_labels = {'Yes', 'No', 'Not Investigated'};  % Labels for text
 
 
 % Add text annotations with specified colors and bold font
+% hold on;
+% for i = 1:numel(text_labels)
+%     text(x_positions(i), y_positions(i), text_labels{i}, 'Color', cmap(i, :), 'FontSize', 9, 'FontWeight', 'bold');
+% end
+% hold off;
+
+% Add text annotations with white font color and background color matching cmap
+if flag_labels
 hold on;
 for i = 1:numel(text_labels)
-    text(x_positions(i), y_positions(i), text_labels{i}, 'Color', cmap(i, :), 'FontSize', 9, 'FontWeight', 'bold');
+    text(x_positions(i), y_positions(i), text_labels{i}, ...
+         'Color', 'white', ...
+         'BackgroundColor', cmap(i, :), ...
+         'FontSize', 10, ...
+         'FontWeight', 'bold', ...
+         'Margin', 1); 
 end
 hold off;
+end
+
 
 
 % subplot for confidence
