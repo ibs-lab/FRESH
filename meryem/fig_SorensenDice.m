@@ -83,8 +83,10 @@ for i = 200:256; cmap(i,:) = cmap(200,:); end
 
 % Visualize the Sørensen-Dice similarity matrix using a heatmap
 figure;
-heatmap(sorensen_dice_matrix, 'Colormap', cmap, 'FontSize', 10, ...
-    'XData', 1:num_vectors, 'YData', 1:num_vectors, 'ColorbarVisible', 'on');
+% heatmap(sorensen_dice_matrix, 'Colormap', cmap, 'FontSize', 12, ...
+%     'XData', 1:num_vectors, 'YData', 1:num_vectors, 'ColorbarVisible', 'on');
+heatmap(sorensen_dice_matrix, 'Colormap', cmap, 'FontSize', 12, ...
+     'ColorbarVisible', 'on');
 clim([0.5 1]);
 xlabel('Groups (ordered by confidence)');
 ylabel('Groups (ordered by confidence)');

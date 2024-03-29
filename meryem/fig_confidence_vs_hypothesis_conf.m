@@ -32,13 +32,13 @@ figure;
 
 subplot1 = subplot(1,2,1); imagesc(fooH');
 cmap = colormap(subplot1, [cmaps(170,:); cmaps(40,:); 0 0 0]);
-xlabel('Hypotheses'); ylabel('Groups (ordered by confidence)');
+xlabel('Hypotheses', 'FontSize',12); ylabel('Groups (ordered by confidence)', 'FontSize',12);
 set(gca,'ytick',[])
 
 if StudyID == 1
-    xlabel('Hypotheses');
+    xlabel('Hypotheses', 'FontSize',12);
 else
-    xlabel('Hypotheses x Subjects');
+    xlabel('Hypotheses x Subjects', 'FontSize',12);
     for column = 0.5 : 10  : 40.5
         line([column, column], [0, 100], 'LineWidth',2, 'Color','black');
     end
@@ -52,13 +52,6 @@ x_positions = [0.6 1.9 3];  % X-coordinates for text
 y_positions = [-1 -1 -1];  % Y-coordinates for text
 text_labels = {'Yes', 'No', 'Not Investigated'};  % Labels for text
 
-
-% Add text annotations with specified colors and bold font
-% hold on;
-% for i = 1:numel(text_labels)
-%     text(x_positions(i), y_positions(i), text_labels{i}, 'Color', cmap(i, :), 'FontSize', 9, 'FontWeight', 'bold');
-% end
-% hold off;
 
 % Add text annotations with white font color and background color matching cmap
 if flag_labels
@@ -80,12 +73,12 @@ end
 subplot2 = subplot(1,2,2);
 imagesc(conf);
 cmap = colormap(subplot2, gray);
-subplot2.Position = [0.55, 0.11, 0.07, 0.815]; % [left, bottom, width, height]
+subplot2.Position = [0.51, 0.11, 0.03, 0.815]; % [left, bottom, width, height]
 
 if flag_analysis == 1
-    ylabel('Analysis Confidence');
+    ylabel('Analysis Confidence', 'FontSize',12);
 else
-    ylabel('Results Confidence');
+    ylabel('Results Confidence', 'FontSize',12);
 end
 set(gca,'xtick',[])
 set(gca,'ytick',[])
