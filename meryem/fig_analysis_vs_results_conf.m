@@ -44,7 +44,7 @@ yticks(0:5);
 xlim([0 5]);
 ylim([0 5]);
 
-title(['corr: ' num2str(round(RHO,2),2), ', p: ' num2str(round(PVAL,2),2)]);
+title(['r: ' num2str(round(RHO,2),2), ', p: ' num2str(round(PVAL,2),2)]);
 
 % corr between confidence and total number of default use
 [rho, p] = corr(a_conf,total_defaults);
