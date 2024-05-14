@@ -28,16 +28,17 @@ filename = 'FreshData.csv';
 p_threshold = 0.05;
 m = 1;
 H_list = [3, 6, 9, 12, 15, 18, 21,24:63]; % Study I: 3 6 9 12 15 18 21; Study II: 24:63
-ProcessingStep = 162;
+ProcessingStep = [76 101 113 122 162 ]    %[76 101 112 113 122 162 ];
 % Data Quality/Pruning Coding: 76 ++
 % Motion Artifact Coding: 85 ++
 % Filtering Coding: 93 ++
-% Stats Coding: 101 ++
-% Stat Analysis: Signal Space:113  ++
-% GLM Method: 162 (canonical/flexible) and 103 (all types)
-% GLM HRF Regressor: 106  ++
+% GLM Method: 101 ++
+% Stat Analysis: Signal Type (HbO/R) 112
+% Stat Analysis: Signal Space (ROI/Channel)  113  ++
+% GLM HRF Regressor: 106 (all types)
 % Statistical Analysis Method: 111
 % Multiple Comparisons: 122
+% GLM HRF Regressor: 162 (canonical/flexible) 
 % Motion Artifact Method Coding: 84 this one a bit tricky, not each H has
 % all categories, so breaking Pvalue line. Checked all pvalues for this,
 % none significant.
