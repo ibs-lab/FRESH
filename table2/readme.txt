@@ -1,0 +1,1 @@
+Please run plot_fig5 to display the Table 2 values on the command window.

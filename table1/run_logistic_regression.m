@@ -1,18 +1,18 @@
 % LOGISTIC REGRESSION
-% runs binary logistic regression for each hypothesis separately for one (logistic regression)
+% This scripts runs a binary logistic regression for each hypothesis separately for one (logistic regression)
 % or any combination of independent variables with multiple subcategories (multiple logistic
 % regression)
-%
+% Please choose the category or categories by setting up the variable
+% "ProcessingStep" below.
 % may2024
 
 
-clear;
+clear all;
 
-% Directory
-dirdata = 'C:\Users\mayucel\Documents\PROJECTS\CODES\FRESH\data';
-addpath(genpath(dirdata));
-dircode = 'C:\Users\mayucel\Documents\PROJECTS\CODES\FRESH\meryem';
-addpath(genpath(dircode));
+% Directory - Replace with your local path for FRESH
+dirfresh = 'yourlocalpath\FRESH';
+addpath(genpath(dirfresh));
+dirsave = 'yourlocalpathforsavingfigures';
 
 
 % Flags
@@ -28,22 +28,19 @@ filename = 'FreshData.csv';
 p_threshold = 0.05;
 m = 1;
 H_list = [3, 6, 9, 12, 15, 18, 21,24:63]; % Study I: 3 6 9 12 15 18 21; Study II: 24:63
-ProcessingStep = [76 101 113 122 162 ]    %[76 101 112 113 122 162 ];
-% Data Quality/Pruning Coding: 76 ++
-% Motion Artifact Coding: 85 ++
-% Filtering Coding: 93 ++
-% GLM Method: 101 ++
+ProcessingStep = [101 113];    %[76 101 113 122 162];
+% category list:
+% Data Quality/Pruning Coding: 76 
+% Motion Artifact Coding: 85 
+% Filtering Coding: 93 
+% GLM Method: 101 
 % Stat Analysis: Signal Type (HbO/R) 112
-% Stat Analysis: Signal Space (ROI/Channel)  113  ++
+% Stat Analysis: Signal Space (ROI/Channel)  113 
 % GLM HRF Regressor: 106 (all types)
 % Statistical Analysis Method: 111
 % Multiple Comparisons: 122
 % GLM HRF Regressor: 162 (canonical/flexible) 
-% Motion Artifact Method Coding: 84 this one a bit tricky, not each H has
-% all categories, so breaking Pvalue line. Checked all pvalues for this,
-% none significant.
-
-
+% Motion Artifact Method Coding: 84 
 
 
 for dependentColIndex = H_list
@@ -52,6 +49,7 @@ for dependentColIndex = H_list
 
     % Load at each loop (as we are excluding different rows each time)
     dummy = readtable(filename);
+    
     % Extract dependent variable and corresponding independent variables
     validRows = ~ismissing(dummy{:, dependentColIndex}) & ~strcmp(dummy{:, dependentColIndex}, 'Not investigated');
     dummy = dummy(validRows, :);
@@ -181,26 +179,3 @@ if flag_chi2_test
         end
     end
 end
-
-
-%% example
-% % Generate sample data
-% n = 100; % Number of samples
-%
-% % Create dependent variable
-% dependentVar = categorical(randi([0, 1], n, 1), [0, 1], {'No', 'Yes'});
-%
-% % Create independent variables
-% independentVar1 = categorical(randi([1, 3], n, 1), 1:3, {'A', 'B', 'C'}); % Independent variable 1
-% independentVar2 = categorical(randi([4, 5], n, 1), 4:5, {'D', 'E'}); % Independent variable 2
-%
-% % Perform logistic regression
-% formulaStr = 'dependentVar ~ independentVar1 + independentVar2'; % Regression formula with both independent variables
-% data = table(dependentVar, independentVar1, independentVar2); % Create table with variables
-% mdl = fitglm(data, formulaStr, 'Distribution', 'binomial', 'Link', 'logit');
-%
-% % Display summary of the logistic regression model
-% disp(mdl);
-%
-% % Make predictions using the model
-% predictions = predict(mdl, data);

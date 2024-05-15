@@ -1,5 +1,6 @@
-% This is the main script that reads the data, calls the functions that generate the figures, and
-% save the figures in matlab format and jpeg.
+% This script reads the fresh data and plots Fig 5: hypothesis varibility and 
+% the Sørensen-Dice plots, displays the relevant statistics, and optionally
+% saves the resultant figures in matlab format and jpeg.
 % Chnage Line11 to your local directory for the freshdata.csv file.
 % MAY
 clear all;
@@ -7,11 +8,12 @@ clear all;
 % flags
 flag_save = 0;
 
-% Directory
-dirdata = 'C:\Users\mayucel\Documents\PROJECTS\CODES\FRESH\data';
-addpath(genpath(dirdata));
-dircode = 'C:\Users\mayucel\Documents\PROJECTS\CODES\FRESH\meryem';
-addpath(genpath(dircode));
+% Directory - Replace with your local path for FRESH
+dirfresh = 'yourlocalpath\FRESH';
+addpath(genpath(dirfresh));
+dirsave = 'yourlocalpathforsavingfigures';
+
+
 
 % load color palette
 load CrameriColourMaps7.0.mat;
@@ -21,11 +23,7 @@ load CrameriColourMaps7.0.mat;
 
 
 %% extract hypothesis results, and plot variability in hypothesis testing
-[H_STUDY_I, H_STUDY_II] = fig_hypothesis_variability(txt);
-
-
-%% plot analysis confidence vs results confidence
-fig_analysis_vs_results_conf(num, tofino);
+[H_STUDY_I, H_STUDY_II] = hypothesis_variability(txt);
 
 
 %% plot confidence vs H testing
@@ -54,12 +52,10 @@ display_corr(num);
 
 %% save plots
 if flag_save
-    % Specify the directory to save the figures
-    directory = 'C:\Users\mayucel\Documents\PROJECTS\PROJECTS\2021_FRESH\FiguresandTables';
 
     % Check if the directory exists, if not, create it
-    if ~isfolder(directory)
-        mkdir(directory);
+    if ~isfolder(dirsave)
+        mkdir(dirsave);
     end
 
     % Get handles to all current figures
