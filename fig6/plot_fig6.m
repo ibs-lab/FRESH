@@ -42,13 +42,13 @@ if flag_save
     for i = 1:length(fig_handles)
 
         % Save as JPEG
-        jpeg_filename = fullfile(directory, ['figure_', num2str(i), '.jpg']);
+        jpeg_filename = fullfile(dirsave, ['figure_', num2str(i), '.jpg']);
         resolution = '-r300'; % For example, 300 DPI
         print(fig_handles(i), jpeg_filename, '-djpeg', resolution);
 
 
         % Save as MATLAB FIG file
-        fig_filename = fullfile(directory, ['figure_', num2str(i), '.fig']);
+        fig_filename = fullfile(dirsave, ['figure_', num2str(i), '.fig']);
         saveas(fig_handles(i), fig_filename, 'fig');
 
     end
