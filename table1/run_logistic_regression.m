@@ -27,7 +27,7 @@ filename = 'FreshData.csv';
 p_threshold = 0.05;
 m = 1;
 H_list = [3, 6, 9, 12, 15, 18, 21,24:63]; % Study I: 3 6 9 12 15 18 21; Study II: 24:63
-ProcessingStep = [101 113];    %[76 101 113 122 162];
+ProcessingStep = [101];    %[76 101 113 122 162];
 % category list:
 % Data Quality/Pruning Coding: 76 
 % Motion Artifact Coding: 85 
@@ -178,3 +178,10 @@ if flag_chi2_test
         end
     end
 end
+
+% Benjamini-Hochberg Correction
+alpha = 0.05;
+[p_sorted, sort_idx] = sort(Pvalues); % Sort p-values
+num_tests = length(Pvalues); % Number of tests
+threshold = ((1:num_tests) / num_tests * alpha)'; % Compute thresholds
+significant_idx = find(p_sorted <= threshold, 1, 'last') % Find significant indices
