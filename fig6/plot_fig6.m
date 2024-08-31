@@ -8,7 +8,7 @@ clear all;
 flag_save = 0;
 
 % Directory - Replace with your local path for FRESH
-dirfresh = 'yourlocalpath\FRESH';
+% dirfresh = 'yourlocalpath\FRESH';
 addpath(genpath(dirfresh));
 dirsave = 'yourlocalpathforsavingfigures';
 
