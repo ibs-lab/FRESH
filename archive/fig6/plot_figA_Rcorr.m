@@ -8,9 +8,11 @@ clear all;
 flag_save = 0;
 
 % Directory - Replace with your local path for FRESH
+% Directory setup
 dirfresh = 'yourlocalpath\FRESH';
 addpath(genpath(dirfresh));
 dirsave = 'yourlocalpathforsavingfigures';
+
 
 % load color palette
 load CrameriColourMaps7.0.mat;

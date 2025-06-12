@@ -17,11 +17,8 @@ for i = 1:5
     end
 end
 
-% Create a size vector for scatter plot, size being the number of repetitions
-sz = [];
-for i = 1:size(x,1)
-    sz = [sz I(x(i,1),x(i,2))];
-end
+% Create a size vector for scatter plot
+sz = arrayfun(@(i) I(x(i,1),x(i,2)), 1:size(x,1));
 
 figure;
 
@@ -30,49 +27,50 @@ figure;
 yfit = polyval(P, a_conf);           % Fitted values
 [Yfit_CI, delta] = polyconf(P, a_conf, S, 'alpha', 0.05); % 95% confidence interval
 
-% Plot the confidence intervals first
+% Plot confidence intervals
 fill([a_conf; flipud(a_conf)], [Yfit_CI + delta; flipud(Yfit_CI - delta)], ...
     [0.9 0.9 0.9], 'EdgeColor', 'none', 'FaceAlpha', 0.5); % Shaded area for CI
 hold on;
 
-% Plot the regression line
+% Regression line
 plot(a_conf, yfit, '-', 'LineWidth', 3, 'Color', cmap(40,:));
 
-% Plot the confidence interval boundaries
-plot(a_conf, Yfit_CI + delta, 'k--', 'LineWidth', 1.5); % Upper confidence bounds
-plot(a_conf, Yfit_CI - delta, 'k--', 'LineWidth', 1.5); % Lower confidence bounds
+% Confidence bounds
+plot(a_conf, Yfit_CI + delta, 'k--', 'LineWidth', 1.5); 
+plot(a_conf, Yfit_CI - delta, 'k--', 'LineWidth', 1.5);
 
-% Plot the scatter plot on top
+% Scatter plot
 scatter(a_conf, r_conf, sz * 30, 'ok', 'MarkerFaceColor', cmap(40,:)); 
 
-% Correlation and p-value calculation
+% Compute Pearson correlation and p-value
 [RHO, PVAL] = corr(a_conf, r_conf);
-disp('Correlation Coefficient (RHO) for Analysis Confidence vs Results Confidence:');
-disp(RHO);
-disp('P-Value (PVAL):');
-disp(PVAL);
+n = length(a_conf);
 
-% Set axis labels and limits
+% Compute 95% CI for Pearson r using Fisher z-transform
+z = 0.5 * log((1 + RHO) / (1 - RHO));
+se = 1 / sqrt(n - 3);
+z_crit = norminv(0.975);  % 1.96
+z_CI = [z - z_crit * se, z + z_crit * se];
+r_CI = (exp(2 * z_CI) - 1) ./ (exp(2 * z_CI) + 1);
+
+% Display in command window
+fprintf('\nPearson correlation between analysis and results confidence:\n');
+fprintf('r = %.2f, p = %.4f, 95%% CI [%.2f, %.2f], n = %d\n', RHO, PVAL, r_CI(1), r_CI(2), n);
+
+% Set axis
 xlabel('Analysis Confidence');
 ylabel('Results Confidence');
-xticks(0:5); % Set the x-axis ticks to integer values
-yticks(0:5);
-xlim([0.5 5.5]);
-ylim([0.5 5.5]);
+xticks(0:5); yticks(0:5);
+xlim([0.5 5.5]); ylim([0.5 5.5]);
 
-% Title with correlation and p-value
-title(['r: ' num2str(round(RHO,2),2), ', p = ' num2str(PVAL, '%.2e')]);
+% Title
+title(sprintf('r = %.2f, p = %.2e', RHO, PVAL));
 
-% Correlation between confidence and total number of defaults
-[rho, p] = corr(a_conf, total_defaults);
-disp('Correlation Coefficient (RHO) for Analysis Confidence vs Total Number of Default Use:');
-disp(rho);
-disp('P-Value (PVAL):');
-disp(p);
+% Additional analysis: confidence vs default use
+[rho_a, p_a] = corr(a_conf, total_defaults);
+[rho_r, p_r] = corr(r_conf, total_defaults);
 
-[rho, p] = corr(r_conf, total_defaults);
-disp('Correlation Coefficient (RHO) for Results Confidence vs Total Number of Default Use:');
-disp(rho);
-disp('P-Value (PVAL):');
-disp(p);
+fprintf('\nCorrelation with total default usage:\n');
+fprintf('Analysis Confidence: r = %.2f, p = %.4f\n', rho_a, p_a);
+fprintf('Results Confidence:  r = %.2f, p = %.4f\n', rho_r, p_r);
 end
